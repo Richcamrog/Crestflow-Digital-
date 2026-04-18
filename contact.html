@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — CrestFlow Digital</title>
+  <meta name="description" content="Request a free GEO audit or ask about AI deployment services. CrestFlow Digital responds within one business day.">
+  <link rel="canonical" href="https://crestflow.io/contact.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://crestflow.io/contact.html">
+  <meta property="og:title" content="Contact — CrestFlow Digital">
+  <meta property="og:description" content="Request a free GEO audit or ask about AI deployment services. We respond within one business day.">
+  <meta property="og:image" content="https://crestflow.io/assets/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact — CrestFlow Digital">
+  <meta name="twitter:description" content="Request a free GEO audit or ask about AI deployment. CrestFlow Digital responds within one business day.">
+  <meta name="twitter:image" content="https://crestflow.io/assets/og-image.png">
+
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="stylesheet" href="assets/style.css">
+
+  <!-- JSON-LD: ContactPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact CrestFlow Digital",
+    "url": "https://crestflow.io/contact.html",
+    "description": "Contact CrestFlow Digital to request a free GEO audit or inquire about AI deployment services.",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "CrestFlow Digital",
+      "email": "hello@crestflow.io",
+      "url": "https://crestflow.io"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ========== NAV ========== -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="index.html" class="nav-logo">CrestFlow<span class="logo-dot">.</span></a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+
+      <a href="contact.html" class="btn btn-primary nav-cta">Book Free Audit</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ========== PAGE HERO ========== -->
+    <div class="page-hero">
+      <div class="container">
+        <span class="section-label">Get in touch</span>
+        <h1>Let's talk</h1>
+        <p>Tell me a bit about your business and what you're trying to figure out. I read every message myself and respond within one business day.</p>
+      </div>
+    </div>
+
+    <!-- ========== CONTACT FORM ========== -->
+    <section>
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- Form -->
+          <div>
+            <!-- TODO: Replace the action URL with your n8n webhook URL.
+                 Example: action="https://n8n.yourdomain.com/webhook/crestflow-contact"
+                 The n8n workflow should: check that website_url_confirm is empty (honeypot),
+                 then send the submission to your email. -->
+            <form
+              action="https://REPLACE-WITH-N8N-WEBHOOK-URL"
+              method="POST"
+              id="contactForm"
+            >
+              <!-- Honeypot field — hidden from real users, bots fill it in -->
+              <div class="hp-field" aria-hidden="true">
+                <label for="website_url_confirm">Leave this field blank</label>
+                <input type="text" name="website_url_confirm" id="website_url_confirm" tabindex="-1" autocomplete="off">
+              </div>
+
+              <div class="form-group">
+                <label for="name">Your name <span aria-hidden="true">*</span></label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="First and last name"
+                  autocomplete="name"
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email address <span aria-hidden="true">*</span></label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="you@yourbusiness.com"
+                  autocomplete="email"
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="website">Business website <span style="color:var(--text-muted);font-weight:400;">(optional)</span></label>
+                <input
+                  type="url"
+                  id="website"
+                  name="website"
+                  placeholder="https://yourbusiness.com"
+                  autocomplete="url"
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="service">What are you interested in? <span aria-hidden="true">*</span></label>
+                <select id="service" name="service" required>
+                  <option value="" disabled selected>Select a service…</option>
+                  <option value="geo-audit">GEO Audit</option>
+                  <option value="monthly-monitoring">Monthly GEO Monitoring</option>
+                  <option value="ai-deployment">AI Deployment (n8n workflows)</option>
+                  <option value="chatbot">Custom AI Chatbot</option>
+                  <option value="not-sure">Not sure yet</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Tell me about your business and what you're trying to solve <span aria-hidden="true">*</span></label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  placeholder="A few sentences is fine. What does your business do? What's the problem you're trying to fix?"
+                ></textarea>
+              </div>
+
+              <div class="form-submit">
+                <button type="submit" class="btn btn-primary">Send Message</button>
+              </div>
+
+            </form>
+
+            <p class="form-note">
+              By submitting this form you agree to be contacted about your inquiry.
+              No spam, no lists, no nonsense.
+            </p>
+          </div>
+
+          <!-- Aside -->
+          <aside class="contact-aside">
+            <h3>Prefer email?</h3>
+            <p>
+              <a href="mailto:hello@crestflow.io">hello@crestflow.io</a>
+            </p>
+            <p>I respond within one business day.</p>
+
+            <div class="contact-note">
+              <strong style="color:var(--text);display:block;margin-bottom:6px;">What happens next</strong>
+              <p>
+                Once I receive your message, I'll review your website and follow up
+                with a few questions if needed. The free audit typically takes
+                3–5 business days from intake to delivered report.
+              </p>
+            </div>
+
+            <div class="contact-note" style="margin-top:16px;">
+              <strong style="color:var(--text);display:block;margin-bottom:6px;">Not sure if a GEO audit is right for you?</strong>
+              <p>
+                That's fine — just say so in the message. I'll tell you honestly
+                whether it makes sense for your situation.
+              </p>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">CrestFlow<span class="logo-dot">.</span></a>
+          <p>AI visibility consulting for businesses that want to be found by the next generation of search.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CrestFlow Digital</p>
+        <a href="mailto:hello@crestflow.io">hello@crestflow.io</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>

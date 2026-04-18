@@ -1,0 +1,43 @@
+# CrestFlow Digital
+
+CrestFlow Digital is a solo AI consultancy that helps veteran-owned small businesses
+become visible to AI assistants — ChatGPT, Claude, Perplexity, Google AI Overviews,
+and Bing Copilot.
+
+## What we do
+
+CrestFlow Digital performs GEO (Generative Engine Optimization) audits. A GEO audit
+measures how well a business is structured for AI discovery and citation, and provides
+a prioritized action plan to improve that visibility.
+
+## Services
+
+- GEO Audit: Full AI visibility analysis including scoring across 6 dimensions,
+  schema markup audit with ready-to-paste fixes, platform readiness check, competitor
+  snapshot, and written action plan. Delivered as PDF + HTML report within one week.
+
+- Monthly GEO Monitoring: Recurring re-audits tracking score progress and flagging
+  new issues as AI platforms evolve.
+
+- AI Deployment: Custom n8n workflows, AI agents, and business automations built
+  to the client's specific needs.
+
+- Custom AI Chatbots: Discord bots and website chat widgets powered by Claude or GPT,
+  built and documented for client handover.
+
+## Who we serve
+
+Veteran-owned small businesses across all industries who want their websites to be
+found when potential customers ask AI assistants about their products and services.
+
+## Contact
+
+Website: https://crestflow.io
+Email: hello@crestflow.io
+
+## Key pages
+
+- Home: https://crestflow.io/
+- Services: https://crestflow.io/services.html
+- About: https://crestflow.io/about.html
+- Contact: https://crestflow.io/contact.html
