@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact — CrestFlow Digital</title>
+  <title>Contact, CrestFlow Digital</title>
   <meta name="description" content="Request a free GEO audit or ask about AI deployment services. CrestFlow Digital responds within one business day.">
   <link rel="canonical" href="https://crestflow.io/contact.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://crestflow.io/contact.html">
-  <meta property="og:title" content="Contact — CrestFlow Digital">
+  <meta property="og:title" content="Contact, CrestFlow Digital">
   <meta property="og:description" content="Request a free GEO audit or ask about AI deployment services. We respond within one business day.">
   <meta property="og:image" content="https://crestflow.io/assets/og-image.png">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Contact — CrestFlow Digital">
+  <meta name="twitter:title" content="Contact, CrestFlow Digital">
   <meta name="twitter:description" content="Request a free GEO audit or ask about AI deployment. CrestFlow Digital responds within one business day.">
   <meta name="twitter:image" content="https://crestflow.io/assets/og-image.png">
 
@@ -34,7 +34,7 @@
     "mainEntity": {
       "@type": "Organization",
       "name": "CrestFlow Digital",
-      "email": "hello@crestflow.io",
+      "email": "Richard@crestflow.io",
       "url": "https://crestflow.io"
     }
   }
@@ -80,16 +80,12 @@
 
           <!-- Form -->
           <div>
-            <!-- TODO: Replace the action URL with your n8n webhook URL.
-                 Example: action="https://n8n.yourdomain.com/webhook/crestflow-contact"
-                 The n8n workflow should: check that website_url_confirm is empty (honeypot),
-                 then send the submission to your email. -->
             <form
-              action="https://REPLACE-WITH-N8N-WEBHOOK-URL"
+              action="https://n8n.srv1480153.hstgr.cloud/webhook/crestflow-contact"
               method="POST"
               id="contactForm"
             >
-              <!-- Honeypot field — hidden from real users, bots fill it in -->
+              <!-- Honeypot field, hidden from real users, bots fill it in -->
               <div class="hp-field" aria-hidden="true">
                 <label for="website_url_confirm">Leave this field blank</label>
                 <input type="text" name="website_url_confirm" id="website_url_confirm" tabindex="-1" autocomplete="off">
@@ -122,7 +118,7 @@
               <div class="form-group">
                 <label for="website">Business website <span style="color:var(--text-muted);font-weight:400;">(optional)</span></label>
                 <input
-                  type="url"
+                  type="text"
                   id="website"
                   name="website"
                   placeholder="https://yourbusiness.com"
@@ -168,7 +164,7 @@
           <aside class="contact-aside">
             <h3>Prefer email?</h3>
             <p>
-              <a href="mailto:hello@crestflow.io">hello@crestflow.io</a>
+              <a href="mailto:Richard@crestflow.io">Richard@crestflow.io</a>
             </p>
             <p>I respond within one business day.</p>
 
@@ -184,7 +180,7 @@
             <div class="contact-note" style="margin-top:16px;">
               <strong style="color:var(--text);display:block;margin-bottom:6px;">Not sure if a GEO audit is right for you?</strong>
               <p>
-                That's fine — just say so in the message. I'll tell you honestly
+                That's fine, just say so in the message. I'll tell you honestly
                 whether it makes sense for your situation.
               </p>
             </div>
@@ -213,7 +209,7 @@
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 CrestFlow Digital</p>
-        <a href="mailto:hello@crestflow.io">hello@crestflow.io</a>
+        <a href="mailto:Richard@crestflow.io">Richard@crestflow.io</a>
       </div>
     </div>
   </footer>

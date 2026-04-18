@@ -566,7 +566,8 @@ section { padding: 80px 0; }
   .founder-photo { margin: 0 auto; }
 
   .cards-3,
-  .secondary-cards-grid { grid-template-columns: 1fr; }
+  .secondary-cards-grid,
+  .pricing-grid { grid-template-columns: 1fr; }
 
   .contact-grid { grid-template-columns: 1fr; }
 
