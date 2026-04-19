@@ -183,6 +183,15 @@ section { padding: 80px 0; }
   line-height: 1.7;
 }
 
+.hero-cite {
+  max-width: 680px;
+  margin: 28px auto 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  opacity: 0.75;
+}
+
 .hero-ctas {
   display: flex;
   gap: 12px;
