@@ -12,9 +12,12 @@ a prioritized action plan to improve that visibility.
 
 ## Services
 
-- GEO Audit: Full AI visibility analysis including scoring across 6 dimensions,
+- GEO Audit ($500): Full AI visibility analysis including scoring across 6 dimensions,
   schema markup audit with ready-to-paste fixes, platform readiness check, competitor
   snapshot, and written action plan. Delivered as PDF + HTML report within one week.
+
+- Audit + Growth Track ($1,000): GEO Audit plus two follow-up reviews at 30 and 60
+  days tracking improvement and adjusting the action plan based on results.
 
 - Monthly GEO Monitoring: Recurring re-audits tracking score progress and flagging
   new issues as AI platforms evolve.
@@ -33,7 +36,7 @@ found when potential customers ask AI assistants about their products and servic
 ## Contact
 
 Website: https://crestflow.io
-Email: hello@crestflow.io
+Email: Richard@crestflow.io
 
 ## Key pages
 
