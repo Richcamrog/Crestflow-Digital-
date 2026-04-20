@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample GEO Audit Report, CrestFlow Digital</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    .report-header {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      padding: 48px 0 40px;
+    }
+    .report-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      align-items: flex-start;
+      margin-top: 24px;
+    }
+    .report-meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .report-meta-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+    .report-meta-value { font-size: 0.95rem; color: var(--text); font-weight: 500; }
+
+    .score-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 24px;
+      margin-top: 20px;
+    }
+    .score-number { font-size: 3rem; font-weight: 800; color: #f59e0b; line-height: 1; }
+    .score-label { display: flex; flex-direction: column; }
+    .score-rating { font-size: 1.1rem; font-weight: 700; color: #f59e0b; }
+    .score-sub { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+
+    .report-section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+    .report-section:last-of-type { border-bottom: none; }
+    .report-section h2 { margin-bottom: 24px; }
+
+    .score-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    .score-table th {
+      text-align: left;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .score-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); }
+    .score-table tr:last-child td { border-bottom: none; font-weight: 700; color: var(--text); }
+    .score-table .cat-name { color: var(--text); font-weight: 500; }
+    .score-table .cat-weight { color: var(--text-muted); font-size: 0.875rem; }
+
+    .score-bar-wrap { display: flex; align-items: center; gap: 12px; }
+    .score-bar-bg { flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; max-width: 160px; }
+    .score-bar-fill { height: 100%; border-radius: 3px; }
+    .bar-poor    { background: #f59e0b; }
+    .bar-fair    { background: #3b82f6; }
+    .bar-critical{ background: #ef4444; }
+    .bar-good    { background: #10b981; }
+    .score-val { font-size: 0.9rem; font-weight: 600; color: var(--text); min-width: 52px; }
+
+    .platform-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-top: 8px; }
+    .platform-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+    }
+    .platform-name { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 8px; }
+    .platform-score { font-size: 1.6rem; font-weight: 800; line-height: 1; }
+    .platform-gap { font-size: 0.8rem; color: var(--text-muted); margin-top: 6px; }
+    .score-poor   { color: #f59e0b; }
+    .score-critical { color: #ef4444; }
+    .score-fair   { color: #3b82f6; }
+
+    .findings-list { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
+    .finding {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .finding.critical { border-left-color: #ef4444; }
+    .finding.high     { border-left-color: #f59e0b; }
+    .finding.medium   { border-left-color: #3b82f6; }
+    .finding-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+    .severity-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .badge-critical { background: rgba(239,68,68,0.15); color: #ef4444; }
+    .badge-high     { background: rgba(245,158,11,0.15); color: #f59e0b; }
+    .badge-medium   { background: rgba(59,130,246,0.15); color: #3b82f6; }
+    .finding h4 { color: var(--text); margin: 0; }
+    .finding p  { margin-top: 6px; font-size: 0.9rem; }
+
+    .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 8px; }
+    @media (max-width: 640px) { .action-grid { grid-template-columns: 1fr; } }
+    .action-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .action-card h3 { font-size: 1rem; margin-bottom: 16px; }
+    .action-items { display: flex; flex-direction: column; gap: 10px; }
+    .action-item { display: flex; gap: 10px; font-size: 0.875rem; color: var(--text-muted); }
+    .action-item::before { content: "→"; color: var(--accent); flex-shrink: 0; font-weight: 700; }
+
+    .demo-banner {
+      background: rgba(0,150,255,0.1);
+      border: 1px solid rgba(0,150,255,0.25);
+      border-radius: var(--radius);
+      padding: 14px 20px;
+      margin-bottom: 32px;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .demo-banner strong { color: var(--accent); }
+
+    .report-cta {
+      background: var(--bg-alt);
+      padding: 64px 0;
+      text-align: center;
+    }
+    .report-cta h2 { margin-bottom: 12px; }
+    .report-cta p  { margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    @media (max-width: 640px) {
+      .score-table th:nth-child(3),
+      .score-table td:nth-child(3) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAV ========== -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="index.html" class="nav-logo"><img src="assets/logo-transparent.png" alt="CrestFlow Digital" height="52"><span class="nav-logo-text">CrestFlow</span></a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <a href="contact.html" class="btn btn-primary nav-cta">Book an Audit</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ========== REPORT HEADER ========== -->
+    <div class="report-header">
+      <div class="container">
+        <div class="demo-banner">
+          <strong>Sample Report</strong> — This is a fictional example showing what a delivered GEO audit looks like.
+          <a href="contact.html" style="margin-left:8px;">Book your real audit →</a>
+        </div>
+
+        <span class="section-label">GEO Audit Report</span>
+        <h1>Blue Ridge Outfitters</h1>
+
+        <div class="score-badge">
+          <span class="score-number">38</span>
+          <span class="score-label">
+            <span class="score-rating">Poor</span>
+            <span class="score-sub">out of 100 &middot; Overall GEO Score</span>
+          </span>
+        </div>
+
+        <div class="report-meta">
+          <div class="report-meta-item">
+            <span class="report-meta-label">Business</span>
+            <span class="report-meta-value">Blue Ridge Outfitters</span>
+          </div>
+          <div class="report-meta-item">
+            <span class="report-meta-label">Website</span>
+            <span class="report-meta-value">blueridgeoutfitters.com</span>
+          </div>
+          <div class="report-meta-item">
+            <span class="report-meta-label">Location</span>
+            <span class="report-meta-value">Roanoke, VA</span>
+          </div>
+          <div class="report-meta-item">
+            <span class="report-meta-label">Audit Date</span>
+            <span class="report-meta-value">April 2026</span>
+          </div>
+          <div class="report-meta-item">
+            <span class="report-meta-label">Pages Analyzed</span>
+            <span class="report-meta-value">6</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== EXECUTIVE SUMMARY ========== -->
+    <div class="report-section">
+      <div class="container" style="max-width:800px;">
+        <span class="section-label">Executive Summary</span>
+        <h2>What we found</h2>
+        <p style="margin-top:16px;">
+          Blue Ridge Outfitters has a functional website with solid technical foundations — the site loads fast, is mobile-friendly, and all pages are indexable. The problem is invisible to most owners: AI assistants have almost no usable information to work with. There is no structured data, content blocks are too thin and generic to be cited, and the business has no presence on the platforms AI systems use to verify entities.
+        </p>
+        <p style="margin-top:14px;">
+          When someone asks ChatGPT or Perplexity for an outdoor gear shop in Roanoke, Blue Ridge Outfitters does not appear in the answer — not because the business isn't good, but because the site is not structured in ways AI can read, trust, or cite. The fixes are specific and actionable. Most of the highest-impact items require no developer.
+        </p>
+        <p style="margin-top:14px;">
+          Implementing the Quick Wins below is estimated to bring the GEO score from 38 to approximately 54 within two weeks. Full implementation of the 30-day plan is projected to reach 65+.
+        </p>
+      </div>
+    </div>
+
+    <!-- ========== SCORE BREAKDOWN ========== -->
+    <div class="report-section" style="background:var(--bg-alt);">
+      <div class="container">
+        <span class="section-label">Score Breakdown</span>
+        <h2>Category scores</h2>
+
+        <table class="score-table" style="margin-top:24px;">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Score</th>
+              <th>Visual</th>
+              <th>Weight</th>
+              <th>Weighted</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cat-name">AI Citability</td>
+              <td><span class="score-poor">32/100</span></td>
+              <td>
+                <div class="score-bar-wrap">
+                  <div class="score-bar-bg"><div class="score-bar-fill bar-critical" style="width:32%"></div></div>
+                </div>
+              </td>
+              <td class="cat-weight">25%</td>
+              <td>8.0</td>
+            </tr>
+            <tr>
+              <td class="cat-name">Brand Authority</td>
+              <td><span class="score-critical">18/100</span></td>
+              <td>
+                <div class="score-bar-wrap">
+                  <div class="score-bar-bg"><div class="score-bar-fill bar-critical" style="width:18%"></div></div>
+                </div>
+              </td>
+              <td class="cat-weight">20%</td>
+              <td>3.6</td>
+            </tr>
+            <tr>
+              <td class="cat-name">Content E-E-A-T</td>
+              <td><span class="score-poor">42/100</span></td>
+              <td>
+                <div class="score-bar-wrap">
+                  <div class="score-bar-bg"><div class="score-bar-fill bar-poor" style="width:42%"></div></div>
+                </div>
+              </td>
+              <td class="cat-weight">20%</td>
+              <td>8.4</td>
+            </tr>
+            <tr>
+              <td class="cat-name">Technical GEO</td>
+              <td><span class="score-fair">74/100</span></td>
+              <td>
+                <div class="score-bar-wrap">
+                  <div class="score-bar-bg"><div class="score-bar-fill bar-fair" style="width:74%"></div></div>
+                </div>
+              </td>
+              <td class="cat-weight">15%</td>
+              <td>11.1</td>
+            </tr>
+            <tr>
+              <td class="cat-name">Schema &amp; Structured Data</td>
+              <td><span class="score-critical">12/100</span></td>
+              <td>
+                <div class="score-bar-wrap">
+                  <div class="score-bar-bg"><div class="score-bar-fill bar-critical" style="width:12%"></div></div>
+                </div>
+              </td>
+              <td class="cat-weight">10%</td>
+              <td>1.2</td>
+            </tr>
+            <tr>
+              <td class="cat-name">Platform Optimization</td>
+              <td><span class="score-critical">29/100</span></td>
+              <td>
+                <div class="score-bar-wrap">
+                  <div class="score-bar-bg"><div class="score-bar-fill bar-critical" style="width:29%"></div></div>
+                </div>
+              </td>
+              <td class="cat-weight">10%</td>
+              <td>2.9</td>
+            </tr>
+            <tr>
+              <td><strong>Overall GEO Score</strong></td>
+              <td><strong class="score-poor">38/100</strong></td>
+              <td></td>
+              <td></td>
+              <td><strong>35.2</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ========== PLATFORM READINESS ========== -->
+    <div class="report-section">
+      <div class="container">
+        <span class="section-label">Platform Readiness</span>
+        <h2>How each AI platform sees your business</h2>
+        <p style="margin-top:8px;">A score below 50 means the platform is unlikely to cite your business in AI-generated answers.</p>
+
+        <div class="platform-grid" style="margin-top:28px;">
+          <div class="platform-card">
+            <div class="platform-name">Google AI Overviews</div>
+            <div class="platform-score score-poor">36/100</div>
+            <div class="platform-gap">No structured data, thin content blocks</div>
+          </div>
+          <div class="platform-card">
+            <div class="platform-name">ChatGPT</div>
+            <div class="platform-score score-critical">28/100</div>
+            <div class="platform-gap">No Wikipedia, no entity confirmation</div>
+          </div>
+          <div class="platform-card">
+            <div class="platform-name">Perplexity AI</div>
+            <div class="platform-score score-critical">24/100</div>
+            <div class="platform-gap">No Reddit mentions, no community signals</div>
+          </div>
+          <div class="platform-card">
+            <div class="platform-name">Google Gemini</div>
+            <div class="platform-score score-critical">31/100</div>
+            <div class="platform-gap">No Google Business Profile claimed</div>
+          </div>
+          <div class="platform-card">
+            <div class="platform-name">Bing Copilot</div>
+            <div class="platform-score score-poor">42/100</div>
+            <div class="platform-gap">Site is crawlable, no IndexNow or schema</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== KEY FINDINGS ========== -->
+    <div class="report-section" style="background:var(--bg-alt);">
+      <div class="container">
+        <span class="section-label">Key Findings</span>
+        <h2>What's holding you back</h2>
+
+        <div class="findings-list" style="margin-top:28px;">
+
+          <div class="finding critical">
+            <div class="finding-header">
+              <span class="severity-badge badge-critical">Critical</span>
+              <h4>No structured data on any page</h4>
+            </div>
+            <p>None of the six pages analyzed contain schema.org markup. AI systems use structured data to understand what a business is, where it's located, what it offers, and who runs it. Without it, every AI platform treats Blue Ridge Outfitters as an anonymous webpage, not a named business entity. Adding a LocalBusiness schema block to the homepage alone would improve the Schema score from 12 to approximately 55.</p>
+          </div>
+
+          <div class="finding critical">
+            <div class="finding-header">
+              <span class="severity-badge badge-critical">Critical</span>
+              <h4>Google Business Profile not claimed</h4>
+            </div>
+            <p>A search for "Blue Ridge Outfitters Roanoke" surfaces a GBP listing with incomplete information and no owner response. Google Gemini and Google AI Overviews draw heavily from GBP data when answering local business queries. Claiming and completing this profile is the single highest-impact action available and costs nothing.</p>
+          </div>
+
+          <div class="finding high">
+            <div class="finding-header">
+              <span class="severity-badge badge-high">High</span>
+              <h4>Homepage content is 210 words — too thin to cite</h4>
+            </div>
+            <p>AI assistants need self-contained passages they can extract and quote. The homepage contains no question-answering content, no FAQ section, and no specific facts about products, services, or expertise. Adding a 200-word "Who we are and what we carry" block, plus 4-5 FAQ items, would significantly increase citability.</p>
+          </div>
+
+          <div class="finding high">
+            <div class="finding-header">
+              <span class="severity-badge badge-high">High</span>
+              <h4>No llms.txt file</h4>
+            </div>
+            <p>llms.txt is an emerging standard that tells AI crawlers what your site is about and which pages to prioritize. It takes 15 minutes to create and signals to AI systems that the site is AI-aware — a small but meaningful trust signal for newer platforms.</p>
+          </div>
+
+          <div class="finding medium">
+            <div class="finding-header">
+              <span class="severity-badge badge-medium">Medium</span>
+              <h4>No off-site brand presence</h4>
+            </div>
+            <p>AI systems build entity confidence by cross-referencing a business across multiple sources. Blue Ridge Outfitters has no LinkedIn page, no press mentions, and no verified presence on directories beyond Yelp. A complete LinkedIn company page and one local press mention would meaningfully lift the Brand Authority score.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== ACTION PLAN ========== -->
+    <div class="report-section">
+      <div class="container">
+        <span class="section-label">Action Plan</span>
+        <h2>What to do next</h2>
+        <p style="margin-top:8px;">Ordered by impact. Quick wins can be done this week without a developer.</p>
+
+        <div class="action-grid" style="margin-top:28px;">
+          <div class="action-card">
+            <h3>Quick Wins — This Week</h3>
+            <div class="action-items">
+              <div class="action-item">Claim and complete Google Business Profile — hours, photos, description, service area</div>
+              <div class="action-item">Add LocalBusiness + Organization JSON-LD schema to homepage (ready-to-paste code below)</div>
+              <div class="action-item">Create llms.txt and upload to site root (draft included in this report)</div>
+              <div class="action-item">Add a 200-word "About us" block to the homepage with specific product categories and location</div>
+              <div class="action-item">Add 5 FAQ items to the homepage or a dedicated FAQ section</div>
+            </div>
+          </div>
+
+          <div class="action-card">
+            <h3>30-Day Plan</h3>
+            <div class="action-items">
+              <div class="action-item">Register Google Search Console and submit sitemap</div>
+              <div class="action-item">Create LinkedIn company page with complete profile and link it in schema sameAs</div>
+              <div class="action-item">Add author attribution and expertise signals to any blog or guide content</div>
+              <div class="action-item">Submit business to 3-5 relevant directories (Yelp, BBB, local chamber of commerce)</div>
+              <div class="action-item">Write one 600-word guide targeting a common customer question (e.g. "best hiking gear for Blue Ridge trails")</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:32px;padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);">
+          <p style="font-size:0.875rem;"><strong style="color:var(--text);">Projected score after Quick Wins:</strong> <span style="color:#f59e0b;font-weight:700;">~54/100</span> &nbsp;&middot;&nbsp; <strong style="color:var(--text);">After full 30-day plan:</strong> <span style="color:#3b82f6;font-weight:700;">~65/100</span></p>
+          <p style="font-size:0.875rem;margin-top:6px;">The report you're viewing includes the ready-to-paste JSON-LD schema, the llms.txt draft, and step-by-step instructions for each item above. You make the changes, or request an implementation quote.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== CTA ========== -->
+    <div class="report-cta">
+      <div class="container">
+        <span class="section-label">Get your audit</span>
+        <h2>See how AI sees your business</h2>
+        <p>This is what a real CrestFlow audit looks like. Your report covers your actual business, your actual competitors, and your actual score — with the same level of detail.</p>
+        <a href="contact.html" class="btn btn-primary">Book Your GEO Audit — $500</a>
+        <p style="margin-top:16px;font-size:0.8rem;">5 business day turnaround &middot; No long-term contract &middot; Delivered as PDF + private web link</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo"><img src="assets/logo-transparent.png" alt="CrestFlow Digital" height="52"><span class="nav-logo-text">CrestFlow</span></a>
+          <p>AI visibility consulting for businesses that want to be found by the next generation of search.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CrestFlow Digital</p>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="mailto:Richard@crestflow.io">Richard@crestflow.io</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
