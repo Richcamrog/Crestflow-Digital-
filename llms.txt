@@ -1,46 +1,29 @@
 # CrestFlow Digital
 
-CrestFlow Digital is a solo AI consultancy that helps veteran-owned small businesses
-become visible to AI assistants — ChatGPT, Claude, Perplexity, Google AI Overviews,
-and Bing Copilot.
+> CrestFlow Digital is a solo GEO (Generative Engine Optimization) audit consultancy founded by Richard Rogers, a United States Marine Corps veteran and former cyber threat analyst. CrestFlow audits how AI assistants — ChatGPT, Perplexity, Google AI Overviews, Gemini, and Bing Copilot — find, understand, and cite small and veteran-owned businesses, and delivers a prioritized action plan to improve that visibility.
 
-## What we do
+## Key Pages
 
-CrestFlow Digital performs GEO (Generative Engine Optimization) audits. A GEO audit
-measures how well a business is structured for AI discovery and citation, and provides
-a prioritized action plan to improve that visibility.
+- [Home](https://crestflow.io/): Overview of GEO audit services, pricing, and founder background.
+- [Services](https://crestflow.io/services.html): Full GEO Audit ($500, 1 week), Audit + Growth Track ($1,000, 4 weeks), Monthly GEO Monitoring, AI Deployment, and Custom AI Chatbots.
+- [About](https://crestflow.io/about.html): Founder Richard Rogers — USMC Intelligence Analyst, cyber threat analyst, Virginia-based, serves small and veteran-owned businesses nationwide.
+- [Contact](https://crestflow.io/contact.html): Contact form and direct email for audit inquiries.
+- [SEO vs GEO: What Changed When ChatGPT Became the New Google](https://crestflow.io/seo-vs-geo.html): Explains the difference between traditional SEO and Generative Engine Optimization, with cited data on zero-click search trends and AI citation patterns.
 
 ## Services
 
-- GEO Audit ($500): Full AI visibility analysis including scoring across 6 dimensions,
-  schema markup audit with ready-to-paste fixes, platform readiness check, competitor
-  snapshot, and written action plan. Delivered as PDF + HTML report within one week.
+- GEO Audit ($500): AI visibility score across 5 platforms, schema markup audit, platform readiness check, competitor snapshot, written action plan, 30-minute review call. Delivered in 5 business days.
+- Audit + Growth Track ($1,000): Full audit plus two follow-up re-audits at 2 and 4 weeks tracking progress.
+- Monthly GEO Monitoring: Recurring re-audits tracking score changes as AI platforms update.
+- AI Deployment: Custom n8n workflows and AI agents deployed to client accounts.
+- Custom AI Chatbots: Website widgets and Discord bots powered by Claude or GPT.
 
-- Audit + Growth Track ($1,000): GEO Audit plus two follow-up reviews at 30 and 60
-  days tracking improvement and adjusting the action plan based on results.
+## About
 
-- Monthly GEO Monitoring: Recurring re-audits tracking score progress and flagging
-  new issues as AI platforms evolve.
-
-- AI Deployment: Custom n8n workflows, AI agents, and business automations built
-  to the client's specific needs.
-
-- Custom AI Chatbots: Discord bots and website chat widgets powered by Claude or GPT,
-  built and documented for client handover.
-
-## Who we serve
-
-Veteran-owned small businesses across all industries who want their websites to be
-found when potential customers ask AI assistants about their products and services.
+CrestFlow Digital is a solo consultancy based in Virginia, founded by Richard Rogers. Richard served in the United States Marine Corps as an Intelligence Analyst and later worked in cyber threat analysis before founding CrestFlow to help small businesses improve their visibility to AI search systems. The consultancy specializes in veteran-owned businesses but serves any small business owner focused on running their operation rather than managing their online presence.
 
 ## Contact
 
-Website: https://crestflow.io
-Email: Richard@crestflow.io
-
-## Key pages
-
-- Home: https://crestflow.io/
-- Services: https://crestflow.io/services.html
-- About: https://crestflow.io/about.html
-- Contact: https://crestflow.io/contact.html
+- Email: Richard@crestflow.io
+- Location: Virginia, USA
+- Website: https://crestflow.io
