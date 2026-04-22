@@ -1,62 +1,130 @@
-# CrestFlow Digital — Website Build Spec
+# CrestFlow Digital — Site Reference
+
+**Status: LIVE** at https://crestflow.io
+**Deploy: Cloudflare Pages** (GitHub push → auto-deploy, ~30 seconds)
+**Repo:** https://github.com/Richcamrog/Crestflow-Digital-
+
+---
 
 ## Stack
+
 Pure static HTML/CSS/JS. No framework, no build step, no npm.
-Deploy: Cloudflare Pages (GitHub push → auto-deploy). Preview locally via VS Code Live Server.
+Preview locally via VS Code Live Server.
+
+---
 
 ## File Structure
+
 ```
 crestflow-site/
-├── index.html           Home
-├── services.html        Services detail
-├── about.html           Founder story / why veterans
-├── contact.html         Contact form
-├── 404.html             Simple 404
-├── assets/
-│   ├── style.css
-│   ├── script.js        Mobile nav toggle only
-│   └── logo.png         (placeholder)
-├── robots.txt
-├── sitemap.xml
-├── llms.txt
+├── index.html              Homepage
+├── services.html           Services (GEO Audit, AI Deployment, Chatbots)
+├── about.html              Founder story
+├── contact.html            Contact form (posts to n8n webhook)
+├── privacy.html            Privacy policy
+├── sample-report.html      Demo GEO report (noindex — not in nav)
+├── seo-vs-geo.html         Blog post (April 2026)
+├── 404.html                404 page
+├── _headers                Cloudflare Pages security headers
+├── BingSiteAuth.xml        Bing Webmaster Tools verification
+├── robots.txt              Allow all crawlers, sitemap reference
+├── sitemap.xml             6 pages (excludes sample-report.html)
+├── llms.txt                AI system guide
 ├── .gitignore
-└── README.md
+├── README.md
+├── Crestflow-deployment.md (this file)
+└── assets/
+    ├── style.css
+    ├── script.js           Mobile nav toggle only
+    ├── logo.png
+    ├── logo-transparent.png
+    ├── richard.jpg
+    └── og-image.png
 ```
 
-## Design
-- Background: `#0f172a` / `#1a1a2e` | Accent: `#0096FF` | Text: `#e5e7eb` | Muted: `#94a3b8`
-- System font stack. No CDNs.
-- Mobile-first. Hamburger nav below 768px.
-- Subtle hover states only. No animations.
+---
 
-## Services Offered (on site)
-| Service | Type |
+## Design Tokens
+
+| Token | Value |
 |---|---|
-| GEO Audit | One-time, price TBD |
-| Monthly GEO Monitoring | Recurring |
-| AI Deployment (n8n) | Project-based |
-| Custom Chatbots | Project-based |
+| `--bg` | `#0f172a` |
+| `--bg-card` | `#1a2540` |
+| `--bg-alt` | `#131e35` |
+| `--accent` | `#0096ff` |
+| `--text` | `#e5e7eb` |
+| `--text-muted` | `#94a3b8` |
+| `--border` | `rgba(148,163,184,0.12)` |
+
+System font stack. No CDNs. Mobile-first, hamburger nav below 768px.
+
+---
+
+## Services (live pricing)
+
+| Service | Type | Price |
+|---|---|---|
+| Full GEO Audit | One-time | $500 |
+| Audit + Growth Track | Package | $1,000 |
+| Monthly GEO Monitoring | Recurring | Quote |
+| AI Deployment | Project-based | Quote |
+| Custom AI Chatbots | Project-based | Quote |
+
+---
 
 ## Contact Form
-- POST to n8n webhook (URL is a placeholder — user fills in)
-- Honeypot field: `website_url_confirm` — n8n rejects non-empty
-- HTML5 validation only
 
-## Placeholders to fill in (grep "TODO")
-- Founder bio / photo
-- Logo image
-- Sample audit PDF link
-- n8n webhook URL
-- GEO audit price
+- **Webhook:** `https://n8n.srv1480153.hstgr.cloud/webhook/crestflow-contact`
+- **n8n workflow:** `PxVkbteTq2zeKvu6` (Crestflow mailer-N8N)
+- **Sends to:** crestflowdigital@gmail.com
+- **From address:** Richard@crestflow.io
+- Honeypot field: `website_url_confirm` (bots fill it, n8n rejects)
+- HTML5 validation on required fields
 
-## Deploy Steps (when ready)
-1. Push `crestflow-site/` to GitHub
-2. Connect repo to Cloudflare Pages
-3. Build command: none (static)
-4. Output directory: `/` (root)
-5. Done — auto-deploys on every push
+---
 
-## Future: Custom Domain
-When free Hostinger domain is ready:
-- Add domain in Cloudflare Pages settings
-- Point DNS to Cloudflare nameservers
+## Schema Markup
+
+| Page | Schema Types |
+|---|---|
+| index.html | Organization, ProfessionalService, WebSite |
+| services.html | FAQPage (5 Q&As), Service with Offers |
+| about.html | Person |
+| contact.html | ContactPage |
+| seo-vs-geo.html | BlogPosting |
+| sample-report.html | None (noindex) |
+
+---
+
+## SEO / GEO Infrastructure
+
+| Item | Status |
+|---|---|
+| robots.txt | Allow all (including GPTBot, ClaudeBot, PerplexityBot) |
+| sitemap.xml | Live — 6 pages |
+| llms.txt | Live — includes blog post |
+| _headers | Live — CSP, X-Frame-Options, Referrer-Policy, Permissions-Policy |
+| Bing Webmaster Tools | Verified (BingSiteAuth.xml), sitemap submitted |
+| Google Search Console | Not yet registered |
+| LinkedIn company page | Not yet created |
+| Cloudflare Email Routing | Richard@crestflow.io → crestflowdigital@gmail.com |
+
+---
+
+## GEO Audit History
+
+| Version | Date | Score | Report |
+|---|---|---|---|
+| v1 | Early 2026 | ~42/100 | Internal |
+| v2 | ~April 2026 | 51/100 | Internal |
+| v3 | April 20, 2026 | 55/100 | https://aivision.srv1480153.hstgr.cloud/reports/a11d28b8/GEO-REPORT.html |
+
+---
+
+## Pending
+
+- Create LinkedIn company page → add URL to Organization + Person sameAs schemas
+- Register Google Search Console → submit sitemap
+- Add homepage "Latest from the blog" section (once second post exists)
+- Add BreadcrumbList schema to inner pages
+- Testimonials section after first client engagement
