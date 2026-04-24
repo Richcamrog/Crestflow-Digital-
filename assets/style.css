@@ -175,7 +175,10 @@ section { padding: 80px 0; }
 .hero {
   padding: 96px 0 80px;
   text-align: center;
-  background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0,150,255,0.1) 0%, transparent 70%);
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0,150,255,0.15) 0%, transparent 70%),
+    linear-gradient(rgba(15,23,42,0.72), rgba(15,23,42,0.72)),
+    url('../assets/hero-bg.jpg') center center / cover no-repeat;
 }
 
 .hero h1 { max-width: 840px; margin: 0 auto 20px; }
