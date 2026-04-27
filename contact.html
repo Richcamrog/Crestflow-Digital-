@@ -80,11 +80,12 @@
 
           <!-- Form -->
           <div>
-            <form
-              action="https://n8n.srv1480153.hstgr.cloud/webhook/crestflow-contact"
-              method="POST"
-              id="contactForm"
-            >
+            <div id="formSuccess" style="display:none;padding:32px 0;text-align:center;">
+              <p style="font-size:1.2rem;font-weight:700;color:var(--accent);margin-bottom:8px;">Message sent!</p>
+              <p style="color:var(--text-muted);">Thanks for reaching out. I'll get back to you within one business day.</p>
+            </div>
+
+            <form id="contactForm">
               <!-- Honeypot field, hidden from real users, bots fill it in -->
               <div class="hp-field" aria-hidden="true">
                 <label for="website_url_confirm">Leave this field blank</label>
