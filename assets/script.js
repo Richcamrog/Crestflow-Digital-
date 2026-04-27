@@ -14,17 +14,16 @@ if (contactForm) {
 
     try {
       const data = new FormData(contactForm);
-      await Promise.all([
-        fetch('https://n8n.srv1480153.hstgr.cloud/webhook/crestflow-contact', {
-          method: 'POST',
-          body: data,
-        }),
-        fetch('https://aivision.srv1480153.hstgr.cloud/contacts-api/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(Object.fromEntries(data)),
-        }),
-      ]);
+      // Fire contacts dashboard save in background — don't block success screen
+      fetch('https://aivision.srv1480153.hstgr.cloud/contacts-api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(Object.fromEntries(data)).toString(),
+      }).catch(() => {});
+      await fetch('https://n8n.srv1480153.hstgr.cloud/webhook/crestflow-contact', {
+        method: 'POST',
+        body: data,
+      });
       contactForm.style.display = 'none';
       document.getElementById('formSuccess').style.display = 'block';
     } catch {
