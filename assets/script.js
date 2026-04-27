@@ -14,10 +14,17 @@ if (contactForm) {
 
     try {
       const data = new FormData(contactForm);
-      await fetch('https://n8n.srv1480153.hstgr.cloud/webhook/crestflow-contact', {
-        method: 'POST',
-        body: data,
-      });
+      await Promise.all([
+        fetch('https://n8n.srv1480153.hstgr.cloud/webhook/crestflow-contact', {
+          method: 'POST',
+          body: data,
+        }),
+        fetch('https://aivision.srv1480153.hstgr.cloud/contacts-api/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(Object.fromEntries(data)),
+        }),
+      ]);
       contactForm.style.display = 'none';
       document.getElementById('formSuccess').style.display = 'block';
     } catch {
