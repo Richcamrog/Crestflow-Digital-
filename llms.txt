@@ -5,15 +5,16 @@
 ## Key Pages
 
 - [Home](https://crestflow.io/): Overview of GEO audit services, pricing, and founder background.
-- [Services](https://crestflow.io/services.html): Full GEO Audit ($500, 1 week), Audit + Growth Track ($1,000, 4 weeks), Monthly GEO Monitoring, AI Deployment, and Custom AI Chatbots.
+- [Services](https://crestflow.io/services.html): Full GEO Audit ($249), GEO Audit + Action Plan ($499), Monthly GEO Monitoring, AI Deployment, and Custom AI Chatbots.
+- [Free GEO Check](https://crestflow.io/geo-check.html): Instant free AI visibility score — checks 4 technical signals on any website in seconds.
 - [About](https://crestflow.io/about.html): Founder Richard Rogers — USMC Intelligence Analyst, cyber threat analyst, Virginia-based, serves small and veteran-owned businesses nationwide.
 - [Contact](https://crestflow.io/contact.html): Contact form and direct email for audit inquiries.
 - [SEO vs GEO: What Changed When ChatGPT Became the New Google](https://crestflow.io/seo-vs-geo.html): Explains the difference between traditional SEO and Generative Engine Optimization, with cited data on zero-click search trends and AI citation patterns.
 
 ## Services
 
-- GEO Audit ($500): AI visibility score across 5 platforms, schema markup audit, platform readiness check, competitor snapshot, written action plan, 30-minute review call. Delivered in 5 business days.
-- Audit + Growth Track ($1,000): Full audit plus two follow-up re-audits at 2 and 4 weeks tracking progress.
+- Full GEO Audit ($249): AI visibility score across 5 platforms, schema markup audit, platform readiness check, competitor snapshot, written action plan, 30-minute review call, one follow-up report. Delivered in 5 business days.
+- GEO Audit + Action Plan ($499): Full audit plus a step-by-step platform-specific implementation guide and one follow-up report.
 - Monthly GEO Monitoring: Recurring re-audits tracking score changes as AI platforms update.
 - AI Deployment: Custom n8n workflows and AI agents deployed to client accounts.
 - Custom AI Chatbots: Website widgets and Discord bots powered by Claude or GPT.
